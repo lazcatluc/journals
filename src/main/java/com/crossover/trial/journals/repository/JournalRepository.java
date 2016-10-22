@@ -1,0 +1,18 @@
+package com.crossover.trial.journals.repository;
+
+import com.crossover.trial.journals.model.Journal;
+import com.crossover.trial.journals.model.Publisher;
+
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.Collection;
+import java.util.List;
+
+public interface JournalRepository extends CrudRepository<Journal, Long>, QueryDslPredicateExecutor<Journal> {
+
+    Collection<Journal> findByPublisher(Publisher publisher);
+
+    List<Journal> findByCategoryIdIn(List<Long> ids);
+
+}
